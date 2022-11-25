@@ -1,6 +1,6 @@
 {
-    "-- Select --": "-- Select --",
-    "-- select --": "-- select --",
+    "-- Select --": "-- Seleccionar --",
+    "-- select --": "-- Seleccionar --",
     "404 - Not found": "404 - Not found",
     ":name doesn't support :currency. List of currencies supported by :name: :currencies.": ":name doesn't support :currency. List of currencies supported by :name: :currencies.",
     ":number product available": ":number product available",
