@@ -1,7 +1,7 @@
 <div class="ps-section--shopping ps-shopping-cart pt-40">
     <div class="container">
         <div class="ps-section__header">
-            <h1>{{ __('Shopping Cart') }}</h1>
+            <h1>Carrito de compras</h1>
         </div>
         <div class="ps-section__content">
             <form class="form--shopping-cart" method="post" action="{{ route('public.cart.update') }}">
@@ -11,10 +11,10 @@
                                 <table class="table ps-table--shopping-cart">
                                     <thead>
                                     <tr>
-                                        <th>{{ __("Product's name") }}</th>
-                                        <th>{{ __('Price') }}</th>
-                                        <th>{{ __('Quantity') }}</th>
-                                        <th>{{ __('Total') }}</th>
+                                        <th>Nombre del producto</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Total</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -37,7 +37,7 @@
                                                             <div class="ps-product__content">
                                                                 <a href="{{ $product->original_product->url }}">{{ $product->name }}</a>
                                                                 @if (is_plugin_active('marketplace') && $product->original_product->store->id)
-                                                                    <p class="d-block mb-0 sold-by"><small>{{ __('Sold by') }}: <a
+                                                                    <p class="d-block mb-0 sold-by"><small>Vendido por: <a
                                                                                 href="{{ $product->original_product->store->url }}">{{ $product->original_product->store->name }}</a></small></p>
                                                                 @endif
 
@@ -76,7 +76,7 @@
                                     </table>
                                 </div>
                     @else
-                        <p class="text-center">{{ __('Your cart is empty!') }}</p>
+                        <p class="text-center">Tu carrito está vacío!!!</p>
                     @endif
                 </form>
         </div>
@@ -85,12 +85,12 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 form-coupon-wrapper">
                         <figure>
-                            <figcaption>{{ __('Coupon Discount') }}</figcaption>
+                            <figcaption>Cupon de descuento</figcaption>
                             <div class="form-group">
-                                <input class="form-control coupon-code" type="text" name="coupon_code" value="{{ old('coupon_code') }}" placeholder="{{ __('Enter coupon code') }}">
+                                <input class="form-control coupon-code" type="text" name="coupon_code" value="{{ old('coupon_code') }}" placeholder="Ingrese su cupón">
                             </div>
                             <div class="form-group">
-                                <button class="ps-btn ps-btn--outline btn-apply-coupon-code" type="button" data-url="{{ route('public.coupon.apply') }}">{{ __('Apply') }}</button>
+                                <button class="ps-btn ps-btn--outline btn-apply-coupon-code" type="button" data-url="{{ route('public.coupon.apply') }}">Aplicar</button>
                             </div>
                         </figure>
                     </div>
@@ -101,7 +101,7 @@
                             </div>
                             @if (EcommerceHelper::isTaxEnabled())
                                 <div class="ps-block__header">
-                                    <p>{{ __('Tax') }} <span> {{ format_price(Cart::instance('cart')->rawTax()) }}</span></p>
+                                    <p>Envío <span> {{ format_price(Cart::instance('cart')->rawTax()) }}</span></p>
                                 </div>
                             @endif
                             @if ($couponDiscountAmount > 0 && session('applied_coupon_code'))
@@ -116,11 +116,13 @@
                             @endif
                             <div class="ps-block__content">
                                 <h3>{{ __('Total') }} <span>{{ ($promotionDiscountAmount + $couponDiscountAmount) > Cart::instance('cart')->rawTotal() ? format_price(0) : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount) }}</span></h3>
-                                <p><small>({{ __('Shipping fees not included') }})</small></p>
+                          
                             </div>
                         </div>
-                        <a class="ps-btn btn-cart-button-action" href="{{ route('public.products') }}"><i class="icon-arrow-left"></i> {{ __('Back to Shop') }}</a>
-                        <a class="ps-btn ps-btn btn-cart-button-action" href="{{ route('public.checkout.information', OrderHelper::getOrderSessionToken()) }}">{{ __('Proceed to checkout') }} <i class="icon-arrow-right"></i></a>
+                        <a class="ps-btn btn-cart-button-action" href="{{ route('public.products') }}"><i class="icon-arrow-left"></i>Seguir comprando</a>
+                        <!-- <a class="ps-btn ps-btn btn-cart-button-action" href="{{ route('public.checkout.information', OrderHelper::getOrderSessionToken()) }}">{{ __('Proceed to checkout') }} <i class="icon-arrow-right"></i></a> -->
+                        <a class="ps-btn ps-btn btn-cart-button-action" href="https://wa.me/51974698744/?text=Hola%20deseo%20culminar%20mi%20compra%20por%20el%20monto%20de%20{{ ($promotionDiscountAmount + $couponDiscountAmount) > Cart::instance('cart')->rawTotal() ? format_price(0) : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount) }}" target="_blank">Realizar mi pedido <i class="icon-arrow-right"></i></a>
+                        
                     </div>
                 </div>
             </div>

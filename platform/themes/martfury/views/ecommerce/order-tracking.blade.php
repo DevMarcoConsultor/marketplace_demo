@@ -145,7 +145,9 @@
 
                                             @if (is_plugin_active('marketplace') && $product->original_product->store->id)
                                                 <p class="d-block mb-0 sold-by">
-                                                    <small>{{ __('Sold by') }}: <a href="{{ $product->original_product->store->url }}">{{ $product->original_product->store->name }}</a>
+                                                    <!-- <small>{{ __('Vendido por') }}: <a href="{{ $product->original_product->store->url }}">{{ $product->original_product->store->name }}</a>
+                                                    </small> -->
+                                                    <small>{{ __('Vendido por') }}: <a><b>{{ $product->original_product->store->name }}</b></a>
                                                     </small>
                                                 </p>
                                             @endif

@@ -26,8 +26,9 @@
     <div class="ps-product__content">
         @if (is_plugin_active('marketplace') && $product->store->id)
             <p class="ps-product__vendor">
-                <span>{{ __('Sold by') }}: </span>
-                <a href="{{ $product->store->url }}" class="text-uppercase">{{ $product->store->name }}</a>
+                <span>{{ __('Vendido por') }}: </span>
+                <!-- <a href="{{ $product->store->url }}" class="text-uppercase">{{ $product->store->name }}</a> -->
+                <a class="text-uppercase"><b>{{ $product->store->name }}</b></a>
             </p>
         @endif
         <a class="ps-product__title" href="{{ $product->url }}">{{ $product->name }}</a>

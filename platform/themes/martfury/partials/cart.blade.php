@@ -37,7 +37,9 @@
                                     @endif
                                     @if (is_plugin_active('marketplace') && $product->original_product->store->id)
                                         <p class="d-block mb-0 sold-by">
-                                            <small>{{ __('Sold by') }}: <a href="{{ $product->original_product->store->url }}">{{ $product->original_product->store->name }}</a>
+                                            <!-- <small>{{ __('Vendido por') }}: <a href="{{ $product->original_product->store->url }}">{{ $product->original_product->store->name }}</a>
+                                            </small> -->
+                                            <small>{{ __('Vendido por') }}: <a><b>{{ $product->original_product->store->name }}</b></a>
                                             </small>
                                         </p>
                                     @endif
@@ -51,15 +53,16 @@
         <div class="ps-cart__footer">
             @if (EcommerceHelper::isTaxEnabled())
                 <h5>{{ __('Sub Total') }}:<strong>{{ format_price(Cart::instance('cart')->rawSubTotal()) }}</strong></h5>
-                <h5>{{ __('Tax') }}:<strong>{{ format_price(Cart::instance('cart')->rawTax()) }}</strong></h5>
+                <h5>{{ __('Envio') }}:<strong>{{ format_price(Cart::instance('cart')->rawTax()) }}</strong></h5>
                 <h3>{{ __('Total') }}:<strong>{{ format_price(Cart::instance('cart')->rawSubTotal() + Cart::instance('cart')->rawTax()) }}</strong></h3>
             @else
                 <h3>{{ __('Sub Total') }}:<strong>{{ format_price(Cart::instance('cart')->rawSubTotal()) }}</strong></h3>
             @endif
             <figure>
-                <a class="ps-btn" href="{{ route('public.cart') }}">{{ __('View Cart') }}</a>
+                <a class="ps-btn" href="{{ route('public.cart') }}">Ver carrito</a>
                 @if (session('tracked_start_checkout'))
-                    <a href="{{ route('public.checkout.information', session('tracked_start_checkout')) }}" class="ps-btn">{{ __('Checkout') }}</a>
+                    <!-- <a href="{{ route('public.checkout.information', session('tracked_start_checkout')) }}" class="ps-btn">{{ __('Checkout') }}</a> -->
+                    <a href="https://wa.me/51974698744/?text=Hola%20deseo%20culminar%20mi%20compra%20por%20el%20monto%20de%20{{ format_price(Cart::instance('cart')->rawSubTotal() + Cart::instance('cart')->rawTax()) }}" target="_blank" class="ps-btn">Comprar</a>
                 @endif
             </figure>
         </div>
